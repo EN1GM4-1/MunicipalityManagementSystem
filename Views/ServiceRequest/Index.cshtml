@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MunicipalityManagementSystem.Models.ServiceRequest>
+
+@{
+    ViewData["Title"] = "Service Request List";
+}
+
+<h2>Service Request List</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Service Request</a>
+    <a asp-action="Edit" class="btn btn-primary">Edit Service Request</a>
+    <a asp-action="Delete" class="btn btn-primary">Delete Service Request</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Citizen Name</th>
+            <th>Service Type</th>
+            <th>Status</th>
+            <th>Date Requested</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@if (Model != null && Model.Any())
+        {
+            @foreach (var serviceRequest in Model)
+        {
+            <tr>
+                <td>@serviceRequest.RequestType</td>
+                <td>@serviceRequest.CitizenID</td>
+                <td>@serviceRequest.ServiceRequestID</td>
+                <td>@serviceRequest.Status</td>
+                <td>@serviceRequest.RequestDate.ToString("d")</td>
+                <td>
+                    <a href="@Url.Action("Edit", "ServiceRequest", new { id = serviceRequest.RequestType })">Edit</a> |
+                    <a href="@Url.Action("Delete", "ServiceRequest", new { id = serviceRequest.RequestType })">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+{
+    <tr><td colspan="8">No Service Requests found.</td></tr>
+}
+
+        
+    </tbody>
+</table>

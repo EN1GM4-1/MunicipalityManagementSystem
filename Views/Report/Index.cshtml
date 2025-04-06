@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MunicipalityManagementSystem.Models.Report>
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<h2>Reports</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Report</a>
+    <a asp-action="Edit" class="btn btn-primary">Edit Report</a>
+    <a asp-action="Delete" class="btn btn-primary">Delete Report</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ReportID)</th>
+            <th>@Html.DisplayNameFor(model => model.ReportDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ReportDetails)</th>
+            <th>@Html.DisplayNameFor(model => model.ServiceRequestID)</th>
+            <th>@Html.DisplayNameFor(model => model.StaffID)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var report in Model)
+        {
+            <tr>
+                <td>@report.ReportID</td>
+                <td>@report.ReportDate.ToString("yyyy-MM-dd")</td>
+                <td>@report.ReportDetails</td>
+                <td>@report.ServiceRequestID</td>
+                <td>@report.StaffID</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@report.ReportID" class="btn btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@report.ReportID" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@report.ReportID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+{
+    <tr><td colspan="8">No citizens found.</td></tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MunicipalityManagementSystem.Models.Citizen>
+
+@{
+    ViewData["Title"] = "Create Citizen";
+}
+
+<h2>Citizen List</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Citizen</a>
+    <a asp-action="Delete" class="btn btn-primary">Delete Citizen</a>
+    <a asp-action="Edit" class="btn btn-primary">Edit Citizen</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Citizen ID</th>
+            <th>Full Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Date Of Birth</th>
+            <th>Registration Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+{
+    @foreach (var citizen in Model)
+    {
+        <tr>
+            
+                <td>@citizen.CitizenID</td>
+                <td>@citizen.FullName</td>
+                <td>@citizen.Address</td>
+                <td>@citizen.PhoneNumber</td>
+                <td>@citizen.Email</td>
+                <td>@citizen.DateOfBirth.ToString("d")</td>
+                <td>@citizen.RegistrationDate.ToString("d")</td>
+                <td>
+                    
+                </td>
+        </tr>
+    }
+}
+else
+{
+    <tr><td colspan="8">No citizens found.</td></tr>
+}
+
+        }
+    </tbody>
+</table>

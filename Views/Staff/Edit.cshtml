@@ -1,0 +1,35 @@
+@model MunicipalityManagementSystem.Models.Staff
+
+@{
+    ViewData["Title"] = "Edit Staff";
+}
+
+<h2>Edit Staff Member</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="StaffID" />
+    
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Position"></label>
+        <input asp-for="Position" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Position"></label>
+        <input asp-for="Position" type="email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label asp-for="Department"></label>
+        <input asp-for="Department" type="email" class="form-control" required />
+    </div>
+    
+    <button type="submit" class="btn btn-warning">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

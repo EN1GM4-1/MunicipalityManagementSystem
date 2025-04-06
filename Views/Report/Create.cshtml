@@ -1,0 +1,35 @@
+@model MunicipalityManagementSystem.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Create Report";
+}
+
+<h2>Create Report</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CitizenID" class="control-label"></label>
+        <input asp-for="CitizenID" class="form-control" />
+        <span asp-validation-for="CitizenID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ServiceRequestID" class="control-label"></label>
+        <input asp-for="ServiceRequestID" class="form-control" />
+        <span asp-validation-for="ServiceRequestID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status" class="control-label"></label>
+        <select asp-for="Status" class="form-control">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RequestDate" class="control-label"></label>
+        <input asp-for="RequestDate" class="form-control" type="date" />
+        <span asp-validation-for="RequestDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

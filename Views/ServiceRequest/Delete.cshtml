@@ -1,0 +1,28 @@
+@model MunicipalityManagementSystem.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+@if (Model == null)
+{
+    <div class="alert alert-danger">No Service requests Found .</div>
+}
+else
+{
+    <h2>Are you sure you want to delete this service request?</h2>
+
+<div>
+    <h4>Request ID: @Model.RequestType</h4>
+    <p>Citizen Name: @Model.CitizenID</p>
+    <p>Service Type: @Model.ServiceRequestID</p>
+    <p>Status: @Model.Status</p>
+    <p>Date Requested: @Model.RequestDate.ToString("d")</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="RequestDate" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "ServiceRequest")" class="btn btn-secondary">Cancel</a>
+</form>
+}

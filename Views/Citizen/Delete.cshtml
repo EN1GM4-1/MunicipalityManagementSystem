@@ -1,0 +1,22 @@
+@model MunicipalityManagementSystem.Models.Citizen
+
+@if (Model != null)
+{
+    <h2>Are you sure you want to delete @Model.FullName?</h2>
+}
+else
+{
+    <h2>Citizen not found.</h2>
+}
+
+<div>
+    <h4>Citizen: @Model?.FullName</h4>
+    <p>Address: @Model?.Address</p>
+    <p>Phone: @Model?.PhoneNumber</p>
+    <p>Email: @Model?.Email</p>
+</div>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CitizenID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "Citizen")" class="btn btn-secondary">Cancel</a>
+</form>
